@@ -1,5 +1,5 @@
 current directory: /Users/doanhongha/self_training/vendor/bundle/ruby/2.7.0/gems/pg-1.2.2/ext
-/Users/doanhongha/.rbenv/versions/2.7.0/bin/ruby -I /Users/doanhongha/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20200209-19184-1dvv3qs.rb extconf.rb
+/Users/doanhongha/.rbenv/versions/2.7.0/bin/ruby -I /Users/doanhongha/.rbenv/versions/2.7.0/lib/ruby/2.7.0 -r ./siteconf20200209-24454-rctsui.rb extconf.rb
 checking for pg_config... no
 No pg_config... trying anyway. If building fails, please try again with
  --with-pg-config=/path/to/pg_config
