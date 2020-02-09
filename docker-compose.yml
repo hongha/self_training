@@ -1,0 +1,40 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:11.1-alpine
+    ports:
+      - 15432:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data:delegated
+  app: &app
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/work/app:cached
+      - bundle-data:/bundle:delegated
+    command: bundle exec rails s -p 3000 -b 0.0.0.0
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    stdin_open: true
+    tty: true
+    environment:
+      RAILS_MAX_THREADS: 5
+      RAILS_DATABASE_DATABASE: self_training_dev
+      RAILS_DATABASE_USERNAME: postgres
+      RAILS_DATABASE_HOST: db
+      RAILS_DATABASE_PASSWORD: ''
+  dev:
+    <<: *app
+    command: bundle exec spring server
+    ports:
+      - 35729:35729
+
+volumes:
+  db-data:
+    driver: local
+  bundle-data:
+    driver: local
